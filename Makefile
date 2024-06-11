@@ -32,7 +32,7 @@ build:
 docker-build:
 	@echo Version:$(CURRENT_VERSION)
 	@echo "== Build for Linux amd64"
-	@docker buildx build --platform linux/amd64 --build-arg BIN_FILENAME=$(BUILD_BASE_NAME)-$(CURRENT_VERSION)-linux-amd64.tar.gz --no-cache=true --push -t docker.io/fideltak/$(BUILD_BASE_NAME):$(CURRENT_VERSION) .
+	@docker buildx build --platform linux/amd64 --build-arg BIN_FILE_NAME="$(BUILD_BASE_NAME)-$(CURRENT_VERSION)-linux-amd64.tar.gz" --no-cache=true --push -t docker.io/fideltak/$(BUILD_BASE_NAME):$(CURRENT_VERSION) .
 	@echo Version:$(CURRENT_VERSION)
 	@echo "== Build for Linux arm64"
-	@docker buildx build --platform linux/arm64 --build-arg BIN_FILENAME=$(BUILD_BASE_NAME)-$(CURRENT_VERSION)-linux-arm64.tar.gz --no-cache=true -t docker.io/fideltak/$(BUILD_BASE_NAME):$(CURRENT_VERSION) .
+	@docker buildx build --platform linux/arm64 --build-arg BIN_FILE_NAME="$(BUILD_BASE_NAME)-$(CURRENT_VERSION)-linux-arm64.tar.gz" --no-cache=true -t docker.io/fideltak/$(BUILD_BASE_NAME):$(CURRENT_VERSION) .

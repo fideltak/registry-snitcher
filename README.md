@@ -16,3 +16,5 @@ You can set env values for the configurations.
 | RS_CPU_ARCH | amd64 | N | arm64 | CPU architecture of the conatainer image. |
 | RS_DURATION_SEC | 60 | N | 20 | Pull image metadata duration seconds. |
 | RS_DEBUG | - | N | YES | Debug mode. No value indicates turning debug off. |
+| RS_PROM_ADDRESS | 0.0.0.0 | N | 127.0.0.1 | Exposed IP for Prometheus exporter. |
+| RS_PROM_PORT | 9100 | N | 80 | Exposed port for Prometheus exporter. |

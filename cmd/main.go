@@ -88,10 +88,10 @@ func main() {
 			log.Debugf("Register an access count as succeeded to Prometheus Exporter")
 			opsSucceeded.Inc()
 		}
-		time.Sleep(time.Duration(d) * time.Second)
-		log.Debugf("Wait for %d sec", d)
 		if testFlag != "" {
 			break
 		}
+		time.Sleep(time.Duration(d) * time.Second)
+		log.Debugf("Wait for %d sec", d)
 	}
 }
