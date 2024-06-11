@@ -32,8 +32,10 @@ func (c *ContainerImage) Inspect() error {
 	}
 
 	sc := types.SystemContext{
-		OSChoice:           c.OsType,
-		ArchitectureChoice: c.CpuArch,
+		OSChoice:                    c.OsType,
+		ArchitectureChoice:          c.CpuArch,
+		OCIInsecureSkipTLSVerify:    true,
+		DockerInsecureSkipTLSVerify: types.OptionalBoolTrue,
 	}
 	ctx := context.Background()
 	img, err := ref.NewImage(ctx, &sc)

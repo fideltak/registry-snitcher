@@ -83,10 +83,11 @@ func main() {
 			log.Error(err)
 			log.Debugf("Register an access count as failed to Prometheus Exporter")
 			opsFailed.Inc()
+		} else {
+			log.Infof("Succeeded: %s", image.ImageName)
+			log.Debugf("Register an access count as succeeded to Prometheus Exporter")
+			opsSucceeded.Inc()
 		}
-		log.Infof("Succeeded: %s", image.ImageName)
-		log.Debugf("Register an access count as succeeded to Prometheus Exporter")
-		opsSucceeded.Inc()
 		time.Sleep(time.Duration(d) * time.Second)
 		log.Debugf("Wait for %d sec", d)
 		if testFlag != "" {
