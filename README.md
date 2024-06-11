@@ -18,3 +18,9 @@ You can set env values for the configurations.
 | RS_DEBUG | - | N | YES | Debug mode. No value indicates turning debug off. |
 | RS_PROM_ADDRESS | 0.0.0.0 | N | 127.0.0.1 | Exposed IP for Prometheus exporter. |
 | RS_PROM_PORT | 9100 | N | 80 | Exposed port for Prometheus exporter. |
+
+## Deploy to k8s
+
+```bash
+$ kubectl apply -f ./k8s
+```
