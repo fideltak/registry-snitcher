@@ -1,0 +1,51 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: registry-snitcher
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: registry-snitcher
+  template:
+    metadata:
+      labels:
+        app: registry-snitcher
+      annotations:
+        sidecar.istio.io/inject: "false"
+    spec:
+      containers:
+      - name: registry-snitcher
+        image: docker.io/fideltak/registry-snitcher:v0.1.0
+        imagePullPolicy: Always
+        env:
+        - name: RS_IMAGE_NAME
+          value: "docker.io/busybox:latest"
+        - name: RS_OS_TYPE
+          value: "linux"
+        - name: RS_CPU_ARCH
+          value: "amd64"
+        - name: RS_DURATION_SEC
+          value: "60"
+        - name: RS_PROM_ADDRESS
+          value: "0.0.0.0"
+        - name: RS_PROM_PORT
+          value: "9100"
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "100m"
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+        ports:
+        - containerPort: 9100
+        readinessProbe:
+          exec:
+            command:
+              - sh
+              - -c
+              - curl --silent https://google.com
+          initialDelaySeconds: 5
+          periodSeconds: 5
